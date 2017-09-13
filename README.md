@@ -135,4 +135,5 @@ A comp for giving an hediff to nearby pawns, can be used in conjunction with dam
 
 ## Limitations/Bugs:
 Cannot be applied to plants (specifically, plants cannot have the necessary ticker)
+
 Currently there is a check to see if the item has a power comp, and if power is on. Manually remove that check and recompile if you want items to emit damage/hediffs despite power status.
