@@ -23,6 +23,12 @@ namespace HediffDamageComps
                     return;
                 }
 
+                if (parent.TryGetComp<CompPowerTrader>() != null
+                    && !parent.TryGetComp<CompPowerTrader>().PowerOn)
+                {
+                    return;
+                }
+
                 //populate potential victim list
                 if (Props.affectAdjacentCells)
                 {

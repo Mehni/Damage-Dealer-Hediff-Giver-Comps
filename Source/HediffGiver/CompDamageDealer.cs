@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using Verse;
 
 namespace HediffDamageComps
@@ -18,6 +19,12 @@ namespace HediffDamageComps
             {
                 HashSet<Thing> affectedThings = new HashSet<Thing>();
                 if (!parent.Spawned)
+                {
+                    return;
+                }
+
+                if(parent.TryGetComp<CompPowerTrader>() != null 
+                    && !parent.TryGetComp<CompPowerTrader>().PowerOn)
                 {
                     return;
                 }
