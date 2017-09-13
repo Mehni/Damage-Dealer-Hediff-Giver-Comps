@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
-
   <ThingDef ParentName="BuildingBase">
-    <defName>CraftingSpot</defName>
+    <defName>DangerousCraftingSpot</defName>
     <label>dangerous crafting spot</label>
-    <Description>A dangerous place for crafting simple things like shivs or bows.</Description>
+    <Description>A dangerous place for crafting simple things like shivs or bows (damages).</Description>
     <ThingClass>Building_WorkTable</ThingClass>
     <graphicData>
       <texPath>Things/Building/Production/CraftingSpot</texPath>
@@ -17,7 +16,7 @@
     </statBases>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 		<useHitPoints>False</useHitPoints>
-    <Size>(4,4)</Size>
+    <Size>(1,1)</Size>
     <DesignationCategory>Production</DesignationCategory>
     <Passability>Standable</Passability>
     <hasInteractionCell>True</hasInteractionCell>
@@ -39,14 +38,123 @@
           <li>ToolCabinet</li>
         </linkableFacilities>
       </li>
-	  <li Class="HediffGiver.CompProperties_HediffGiver">
-		<compClass>HediffGiver.CompHediffGiver</compClass>
+	  <li Class="HediffDamageComps.CompProperties_DamageDealer">
+		<compClass>HediffDamageComps.CompDamageDealer</compClass>
 		<damageAmount>1</damageAmount>
 		<damageDef>Crush</damageDef>
 		<affectInteractionCell>true</affectInteractionCell>
-		<affectAdjacentCells>true</affectAdjacentCells>
+		<affectAdjacentCells>false</affectAdjacentCells>
 		<damagesSelf>false</damagesSelf>
-		<ticksBetweenDamage>20</ticksBetweenDamage>
+		<ticksBetweenDamage>400</ticksBetweenDamage>
+	  </li>
+    </comps>
+    <designationHotkey>Misc1</designationHotkey>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>CursedCraftingSpot</defName>
+    <label>cursed crafting spot</label>
+    <Description>A cursed place for crafting simple things like shivs or bows (infects).</Description>
+    <ThingClass>Building_WorkTable</ThingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/CraftingSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <AltitudeLayer>FloorEmplacement</AltitudeLayer>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<useHitPoints>False</useHitPoints>
+    <Size>(1,1)</Size>
+    <DesignationCategory>Production</DesignationCategory>
+    <Passability>Standable</Passability>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+	  <li Class="HediffDamageComps.CompProperties_HediffGiver">
+		<compClass>HediffDamageComps.CompHediffGiver</compClass>
+		<hediffDef>WoundInfection</hediffDef>
+		<affectInteractionCell>true</affectInteractionCell>
+		<affectAdjacentCells>false</affectAdjacentCells>
+		<affectsSelf>false</affectsSelf>
+		<ticksBetweenEffect>200</ticksBetweenEffect>
+	  </li>
+    </comps>
+    <designationHotkey>Misc1</designationHotkey>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>DemonicCraftingSpot</defName>
+    <label>demonic crafting spot</label>
+    <Description>A demonic place for crafting simple things like shivs or bows (cancer and damages).</Description>
+    <ThingClass>Building_WorkTable</ThingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/CraftingSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <AltitudeLayer>FloorEmplacement</AltitudeLayer>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<useHitPoints>False</useHitPoints>
+    <Size>(1,1)</Size>
+    <DesignationCategory>Production</DesignationCategory>
+    <Passability>Standable</Passability>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+	  <li Class="HediffDamageComps.CompProperties_HediffGiver">
+		<compClass>HediffDamageComps.CompHediffGiver</compClass>
+		<hediffDef>Carcinoma</hediffDef>
+		<affectInteractionCell>true</affectInteractionCell>
+		<affectAdjacentCells>true</affectAdjacentCells>
+		<affectsSelf>false</affectsSelf>
+		<ticksBetweenEffect>666</ticksBetweenEffect>
+	  </li>
+	  <li Class="HediffDamageComps.CompProperties_DamageDealer">
+		<compClass>HediffDamageComps.CompDamageDealer</compClass>
+		<damageAmount>1</damageAmount>
+		<damageDef>Crush</damageDef>
+		<affectInteractionCell>true</affectInteractionCell>
+		<affectAdjacentCells>false</affectAdjacentCells>
+		<damagesSelf>false</damagesSelf>
+		<ticksBetweenDamage>666</ticksBetweenDamage>
 	  </li>
     </comps>
     <designationHotkey>Misc1</designationHotkey>

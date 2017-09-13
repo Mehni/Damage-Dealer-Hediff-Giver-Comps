@@ -1,8 +1,8 @@
 ﻿using Verse;
 
-namespace HediffGiver
+namespace HediffDamageComps
 {
-    public class CompProperties_HediffGiver : CompProperties
+    public class CompProperties_DamageDealer : CompProperties
     {
         public int damageAmount;
         public DamageDef damageDef;
@@ -11,8 +11,8 @@ namespace HediffGiver
         public bool damagesSelf;
         public int ticksBetweenDamage;
 
-        public CompProperties_HediffGiver() {
-			compClass = typeof(CompHediffGiver);
+        public CompProperties_DamageDealer() {
+			compClass = typeof(CompDamageDealer);
         }
     }
 }

@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using Verse;
 
-namespace HediffGiver
+namespace HediffDamageComps
 {
-    public class CompHediffGiver : ThingComp
+    public class CompDamageDealer : ThingComp
     {
         private float ticks = 0;
-        public CompProperties_HediffGiver Props {
-            get => (CompProperties_HediffGiver) props;
+        public CompProperties_DamageDealer Props {
+            get => (CompProperties_DamageDealer) props;
         }
 
         public override void CompTick()
         {
+            ticks += 1;
             base.CompTick();
-            if (ticks++ % Props.ticksBetweenDamage == 0)
+            if (ticks % Props.ticksBetweenDamage == 0)
             {
                 HashSet<Thing> affectedThings = new HashSet<Thing>();
                 if (!parent.Spawned)

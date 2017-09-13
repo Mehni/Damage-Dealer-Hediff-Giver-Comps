@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Verse;
+using RimWorld;
 
-namespace HediffGiver
+namespace HediffDamageComps
 {
     public class CompHediffGiver : ThingComp
     {
@@ -13,7 +14,8 @@ namespace HediffGiver
         public override void CompTick()
         {
             base.CompTick();
-            if (ticks++ % Props.ticksBetweenDamage == 0)
+            ticks += 1;
+            if (ticks % Props.ticksBetweenEffect == 0)
             {
                 HashSet<Thing> affectedThings = new HashSet<Thing>();
                 if (!parent.Spawned)
@@ -27,7 +29,6 @@ namespace HediffGiver
                     foreach (IntVec3 cell in parent.CellsAdjacent8WayAndInside())
                     {
                         affectedThings.AddRange(cell.GetThingList(parent.Map));
-                        Log.Message("" + affectedThings.Count);
                     }
                 }
                 else if (Props.affectInteractionCell)
@@ -36,19 +37,21 @@ namespace HediffGiver
                 }
 
                 //remove item from list if it doesn't damage itself
-                if (!Props.damagesSelf)
+                if (!Props.affectsSelf)
                 {
                     affectedThings.Remove(parent);
                 }
 
                 foreach(Thing t in affectedThings)
                 {
-                    t.TakeDamage(new DamageInfo(Props.damageDef, Props.damageAmount, -1, parent));
+                    if (t is Pawn)
+                    {
+                        ((Pawn)t).health.AddHediff(Props.hediffDef, null, null);
+                    }
                 }
 
                 ticks = 0;
             }
-
         }
     }
 }
