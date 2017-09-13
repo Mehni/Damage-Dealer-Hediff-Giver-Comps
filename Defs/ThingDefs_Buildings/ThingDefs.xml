@@ -3,8 +3,8 @@
 
   <ThingDef ParentName="BuildingBase">
     <defName>CraftingSpot</defName>
-    <label>crafting spot</label>
-    <Description>A place for crafting simple things like shivs or bows.</Description>
+    <label>dangerous crafting spot</label>
+    <Description>A dangerous place for crafting simple things like shivs or bows.</Description>
     <ThingClass>Building_WorkTable</ThingClass>
     <graphicData>
       <texPath>Things/Building/Production/CraftingSpot</texPath>
@@ -17,7 +17,7 @@
     </statBases>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 		<useHitPoints>False</useHitPoints>
-    <Size>(1,1)</Size>
+    <Size>(4,4)</Size>
     <DesignationCategory>Production</DesignationCategory>
     <Passability>Standable</Passability>
     <hasInteractionCell>True</hasInteractionCell>
@@ -32,15 +32,23 @@
       <canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
       <ai_chillDestination>false</ai_chillDestination>
     </building>
+    <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
           <li>ToolCabinet</li>
         </linkableFacilities>
       </li>
+	  <li Class="HediffGiver.CompProperties_HediffGiver">
+		<compClass>HediffGiver.CompHediffGiver</compClass>
+		<damageAmount>1</damageAmount>
+		<damageDef>Crush</damageDef>
+		<affectInteractionCell>true</affectInteractionCell>
+		<affectAdjacentCells>true</affectAdjacentCells>
+		<damagesSelf>false</damagesSelf>
+		<ticksBetweenDamage>20</ticksBetweenDamage>
+	  </li>
     </comps>
     <designationHotkey>Misc1</designationHotkey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
   </ThingDef>
+</ThingDefs>

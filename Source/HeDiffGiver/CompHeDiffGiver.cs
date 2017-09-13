@@ -9,7 +9,7 @@ namespace HediffGiver
         public CompProperties_HediffGiver Props {
             get => (CompProperties_HediffGiver) props;
         }
-
+        
         public override void CompTick()
         {
             base.CompTick();
@@ -27,6 +27,7 @@ namespace HediffGiver
                     foreach (IntVec3 cell in parent.CellsAdjacent8WayAndInside())
                     {
                         affectedThings.AddRange(cell.GetThingList(parent.Map));
+                        Log.Message("" + affectedThings.Count);
                     }
                 }
                 else if (Props.affectInteractionCell)
