@@ -10,9 +10,11 @@ namespace HediffDamageComps
         public bool affectAdjacentCells;
         public bool damagesSelf;
         public int ticksBetweenDamage;
+        public bool affectOwnCell;
 
-        public CompProperties_DamageDealer() {
-			compClass = typeof(CompDamageDealer);
+        public CompProperties_DamageDealer()
+        {
+            compClass = typeof(CompDamageDealer);
         }
     }
 }

@@ -34,12 +34,22 @@ namespace HediffDamageComps
                 {
                     foreach (IntVec3 cell in parent.CellsAdjacent8WayAndInside())
                     {
-                        affectedThings.AddRange(cell.GetThingList(parent.Map));
+                        if (Props.affectOwnCell || cell != parent.Position)
+                        {
+                            affectedThings.AddRange(cell.GetThingList(parent.Map));
+                        }
                     }
                 }
-                else if (Props.affectInteractionCell)
+                else
                 {
-                    affectedThings.AddRange(parent.InteractionCell.GetThingList(parent.Map));
+                    if (Props.affectInteractionCell)
+                    {
+                        affectedThings.AddRange(parent.InteractionCell.GetThingList(parent.Map));
+                    }
+                    else if (Props.affectOwnCell)
+                    {
+                        affectedThings.AddRange(parent.Position.GetThingList(parent.Map));
+                    }
                 }
 
                 //remove item from list if it doesn't damage itself

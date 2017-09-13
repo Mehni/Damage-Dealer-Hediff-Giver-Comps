@@ -11,6 +11,7 @@ namespace HediffDamageComps
         public bool affectAdjacentCells;
         public bool affectsSelf;
         public int ticksBetweenEffect;
+        public bool affectOwnCell;
 
         public CompProperties_HediffGiver() {
 			compClass = typeof(CompHediffGiver);
